@@ -1,0 +1,4 @@
+set -s escape-time 0
+set -g default-terminal "screen-256color"
+
+if-shell '[ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]' 'unbind C-b; set-option -g prefix C-a; bind-key C-a send-prefix'

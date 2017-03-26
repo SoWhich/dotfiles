@@ -1,0 +1,11 @@
+# This file is sourced at the beginning of initial progress
+# when zsh is started as a login shell
+
+# Do things if in tty
+current_vt=$(tty) # Get the current virtual terminal
+if [ ${current_vt#*/dev/tty} != "${current_vt}" ]; then
+	# Start X if in tty1
+	if [ ${current_vt: -1} -eq 1 ]; then
+		exec startx
+	fi
+fi

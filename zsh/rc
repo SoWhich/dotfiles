@@ -1,0 +1,38 @@
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _match _approximate _prefix
+zstyle ':completion:*' expand prefix
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' ignore-parents parent pwd .. directory
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list ''
+zstyle ':completion:*' use-compctl false
+zstyle :compinstall filename '/home/mkunjummen/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# Lines configured by me!
+export EDITOR=nvim
+export PS1="%n | %~ %#"
+
+alias ls="ls --color=auto"
+alias ll="ls -l --color=auto"
+alias lla="ls -hlAF --color=auto"
+alias vim="nvim"
+
+# Start tmux in every terminal
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux -2
+
+# Add /home/mkunjummen/bin to the path
+path+=/home/mkunjummen/bin
+export PATH
