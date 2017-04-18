@@ -21,10 +21,10 @@
 # 	xmodmap "${user_modmap}"
 # fi
 
-# Set the background color
-if [ -f "/home/mkunjummen/Pictures/wallpaper.bmp"] then
-	xsetroot -bitmap "/home/mkunjummen/Pictures/wallpaper.bmp"
-fi 
+# Set the background
+#if [ -f "/home/mkunjummen/Pictures/wallpaper.bmp"]; then
+#	xsetroot -bitmap "/home/mkunjummen/Pictures/wallpaper.xbm"
+#fi
 # Start xautolock in the background with a 5 minute timer and i3lock
 #xautolock -time 15 -locker "i3lock -i '/home/mkunjummen/Pictures/Stormtrooper-wall.png'"
 
@@ -33,6 +33,9 @@ start-pulseaudio-x11 &
 
 # set the brightness to not death to my eyes level
 xbacklight -set 30
+
+# toggle between English and German keyboards on alt+shift
+setxkbmap -option grp:alt_shift_toggle us,de
 
 # Start i3wm
 exec i3
