@@ -1,6 +1,9 @@
 # This file is sourced at the beginning of initial progress
 # when zsh is started as a login shell
 
+# start mpd if no other instance exists
+[ ! -s ~/.config/mpd/pid ] && mpd
+
 # Do things if in tty
 current_vt=$(tty) # Get the current virtual terminal
 if [ ${current_vt#*/dev/tty} != "${current_vt}" ]; then
