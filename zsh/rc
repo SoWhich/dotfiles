@@ -22,17 +22,18 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 # Lines configured by me!
 export EDITOR=nvim
+export PAGER=less
+export GOPATH=/home/mkunjummen/workspace/go
 export PS1="%n | %~ %#"
 
 alias ls="ls --color=auto"
 alias ll="ls -l --color=auto"
+alias la="ls -A --color=auto"
 alias lla="ls -hlAF --color=auto"
+alias mv="mv -i"
 alias vim="nvim"
 
-# Start tmux in every terminal
+# Start tmux in every terminal so long as there's no existing tmux session in
+# it
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && exec tmux -2
-
-# Add /home/mkunjummen/bin to the path
-path+=/home/mkunjummen/bin
-export PATH
