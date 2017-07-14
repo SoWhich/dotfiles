@@ -26,18 +26,18 @@ order += "tztime date"
 order += "tztime local"
 
 wireless wlp4s0 {
-        format_up = "W: (%ip) %quality"
-        format_down = "W: down"
+	format_up = "W: (%ip) %quality"
+	format_down = "W: down"
 }
 
 ethernet eth0 {
         # if you use %speed, i3status requires root privileges
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+	format_up = "E: %ip (%speed)"
+	format_down = "E: down"
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+	format = "%status %percentage %remaining"
 	status_chr = "⚡"
 	status_bat = "🔋"
 	status_unk = "?"
@@ -45,19 +45,19 @@ battery 0 {
 }
 
 run_watch DHCP {
-        pidfile = "/var/run/dhclient*.pid"
+	pidfile = "/var/run/dhclient*.pid"
 }
 
 run_watch VPN {
-        pidfile = "/var/run/vpnc/pid"
+	pidfile = "/var/run/vpnc/pid"
 }
 
 tztime date {
-        format = "%A, %b %d"
+	format = "%A, %b %d"
 }
 
 tztime local {
-        format = "%I:%M %p"
+	format = "%I:%M %p"
 }
 
 disk "/" {
