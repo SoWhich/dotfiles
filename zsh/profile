@@ -6,6 +6,9 @@ path+=/home/mkunjummen/bin
 path+=/home/mkunjummen/bin/go
 export PATH
 
+# start mpd if no other instance exists
+[[ ! -a ~/.config/mpd/pid ]] && mpd
+
 # Do things if in tty
 current_vt=$(tty) # Get the current virtual terminal
 if [ ${current_vt#*/dev/tty} != "${current_vt}" ]; then
@@ -14,6 +17,3 @@ if [ ${current_vt#*/dev/tty} != "${current_vt}" ]; then
 		exec startx
 	fi
 fi
-
-# start mpd if no other instance exists
-[[ ! -a ~/.config/mpd/pid ]] && mpd
