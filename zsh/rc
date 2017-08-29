@@ -32,6 +32,7 @@ alias la="ls -A --color=auto"
 alias lla="ls -hlAF --color=auto"
 alias mv="mv -i"
 alias vim="nvim"
+alias pwd="/usr/bin/pwd -P"
 
 # Start tmux in every terminal so long as there's no existing tmux session in
 # it
