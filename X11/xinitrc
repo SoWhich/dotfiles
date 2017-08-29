@@ -37,5 +37,9 @@ xbacklight -set 30
 # toggle between English and German keyboards on alt+shift
 setxkbmap -option grp:alt_shift_toggle us,de
 
+# for the nvidia graphics card i've got
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+
 # Start i3wm
 exec i3
