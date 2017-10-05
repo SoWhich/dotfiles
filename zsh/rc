@@ -24,7 +24,7 @@ bindkey -v
 export EDITOR=nvim
 export PAGER=less
 export GOPATH=/home/mkunjummen/workspace/go
-export PS1="%n | %~ %#"
+export PS1="%n | %~ %# "
 
 alias ls="ls --color=auto"
 alias ll="ls -l --color=auto"
@@ -32,6 +32,7 @@ alias la="ls -A --color=auto"
 alias lla="ls -hlAF --color=auto"
 alias mv="mv -i"
 alias vim="nvim"
+alias :q="exit"
 alias pwd="/usr/bin/pwd -P"
 
 # Start tmux in every terminal so long as there's no existing tmux session in
