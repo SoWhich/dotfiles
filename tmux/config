@@ -1,4 +1,37 @@
 set -s escape-time 0
 set -g default-terminal "screen-256color"
 
-if-shell '[ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]' 'unbind C-b; set-option -g prefix C-a; bind-key C-a send-prefix'
+# Use vi mode-keys
+set -g mode-keys vi
+
+# use mouse to scroll
+set -g mouse on
+
+# Rebind split commands
+## Horizontal split with '|'
+unbind %
+bind | split-window -h -c "#{pane_current_path}"
+## Vertical split with '-'
+unbind '"'
+
+# Use vi keybindings for pane navigation
+## Change to pane to the left
+bind h select-pane -L
+## Change to pane to the right
+bind l select-pane -R
+## Change to pane above
+bind k select-pane -U
+## Change to pane below
+
+# Use vi's visual keybindings for copy-mode
+bind-key Escape copy-mode
+unbind-key -T copy-mode-vi Escape
+bind-key -T copy-mode-vi Escape send-keys -X clear-selection
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi V send-keys -X rectangle-toggle
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard"
+bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel "xclip -selection clipboard"
+bind-key p run 'xclip -o -selection clipboard | tmux load-buffer - ; tmux paste-buffer'
+
+# Set window notifications
+setw -g monitor-activity on
