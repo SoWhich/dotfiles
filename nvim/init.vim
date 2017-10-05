@@ -35,13 +35,25 @@ if filereadable(expand($HOME.'/.config/nvim/autoload/plug.vim'))
 		" Adds vim-go, a plugin for golang
 		Plug 'fatih/vim-go'
 
+		" Adds java_getset, a plugin that generates accessors and
+		" mutators for java
+		Plug 'vim-scripts/java_getset.vim'
+
 	call plug#end()
 endif
 
-" turn on syntax highlighting, line numbering, and autoindenting for every
-" file
+" turn on syntax highlighting, auto hybrid numbering, and autoindenting for
+" every file
 syntax on
-set number
+
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 set autoindent
 
 " enables plugins and indent scripts based on filetype
@@ -74,7 +86,6 @@ set listchars+=trail:·,
 " set a line at 80 characters
 if exists('+colorcolumn')
 	set colorcolumn=80
-	highlight colorcolumn ctermbg=1 guibg=yellow
 else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
@@ -109,3 +120,4 @@ let g:limelight_default_coefficient = 0.7
 " Highlighting priority (default: 10)
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
+colorscheme ayu
