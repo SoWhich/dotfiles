@@ -9,7 +9,7 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list ''
 zstyle ':completion:*' use-compctl false
-zstyle :compinstall filename '/home/mkunjummen/.zshrc'
+zstyle :compinstall filename "${HOME}/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -23,7 +23,7 @@ bindkey -v
 # Lines configured by me!
 export EDITOR=nvim
 export PAGER=less
-export GOPATH=/home/mkunjummen/workspace/go
+export GOPATH=${HOME}/workspace/go
 export PS1="%n | %~ %# "
 
 alias ls="ls --color=auto"
