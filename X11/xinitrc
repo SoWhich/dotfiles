@@ -22,9 +22,9 @@
 # fi
 
 # Set the background
-#if [ -f "/home/mkunjummen/Pictures/wallpaper.bmp"]; then
-#	xsetroot -bitmap "/home/mkunjummen/Pictures/wallpaper.xbm"
-#fi
+if [ -f "/home/mkunjummen/Pictures/wallpaper.bmp"]; then
+	xsetroot -bitmap "/home/mkunjummen/Pictures/wallpaper.xbm"
+fi
 # Start xautolock in the background with a 5 minute timer and i3lock
 #xautolock -time 15 -locker "i3lock -i '/home/mkunjummen/Pictures/Stormtrooper-wall.png'"
 
@@ -40,6 +40,15 @@ setxkbmap -option grp:alt_shift_toggle us,de
 # for the nvidia graphics card i've got
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
+
+# activate the keybindings in xbindkeys
+xbindkeys
+
+# set capslock to be escape for vim et al
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+
+# set the minimum value of light
+light -Sc .11
 
 # Start i3wm
 exec i3
