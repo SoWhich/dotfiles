@@ -39,6 +39,12 @@ if filereadable(expand($HOME.'/.config/nvim/autoload/plug.vim'))
 		" mutators for java
 		Plug 'vim-scripts/java_getset.vim'
 
+		" Adds deoplete, a neovim or vim 7 word completion tools
+		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+		" Adds NeoTex, a plugin to do live previewing of tex documents
+		Plug 'donRaphaco/neotex', { 'for': 'tex' }
+
 	call plug#end()
 endif
 
@@ -94,7 +100,7 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 
 " sets the airline theme
-let g:airline_theme='molokai'
+let g:airline_theme='base16'
 
 " lets airline see powerline symbols
 let g:airline_powerline_fonts = 1
@@ -121,3 +127,9 @@ let g:limelight_default_coefficient = 0.7
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
 colorscheme ayu
+
+"enable completions by deoplete
+let g:deoplete#enable_at_startup = 1
+
+"bind control-escape to go to normal mode in terminal mode
+tnoremap <C-Esc> <C-\><C-n>
