@@ -13,15 +13,21 @@ unbind %
 bind | split-window -h -c "#{pane_current_path}"
 ## Vertical split with '-'
 unbind '"'
+bind - split-window -v -c "#{pane_current_path}"
 
 # Use vi keybindings for pane navigation
 ## Change to pane to the left
 bind h select-pane -L
+bind C-h resize-pane -L
 ## Change to pane to the right
 bind l select-pane -R
+bind C-l resize-pane -R
 ## Change to pane above
 bind k select-pane -U
+bind C-k resize-pane -U
 ## Change to pane below
+bind j select-pane -D
+bind C-j resize-pane -D
 
 # Use vi's visual keybindings for copy-mode
 bind-key Escape copy-mode
