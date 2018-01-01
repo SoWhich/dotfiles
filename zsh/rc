@@ -21,12 +21,29 @@ SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # Lines configured by me!
+autoload -Uz vcs_info
+setopt promptsubst
+
+function prompt_char {
+	git branch >/dev/null 2>/dev/null && echo '' && return
+	echo ''
+}
+
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+zstyle ':vcs_info:git:*' formats '%b'
+
 export EDITOR=nvim
 export PAGER=less
 export GOPATH=${HOME}/workspace/go
-export PS1="%n | %~ %# "
+export PROMPT='%K{054}%F{000}%F{007} %B@%M%b%F{141}%n %K{023}%F{054} %F{007}%~ %K{000}%F{023}
+%K{057}%F{000}%F{007} $(prompt_char) ${vcs_info_msg_0_} %F{057}%K{238}%F{007} %# %k%F{238}%F{007}'
+export PS2='%K{238}%F{000}%F{007}%_%k%F{238}%F{007}'
+#export PS1="%n | %~ %# "
 
+eval $(thefuck --alias)
 alias ls="ls --color=auto"
+alias l.="ls --color=auto .*"
 alias ll="ls -l --color=auto"
 alias la="ls -A --color=auto"
 alias lla="ls -hlAF --color=auto"
@@ -34,8 +51,14 @@ alias mv="mv -i"
 alias vim="nvim"
 alias :q="exit"
 alias pwd="/usr/bin/pwd -P"
+alias fix="fuck"
 
-# Start tmux in every terminal so long as there's no existing tmux session in
-# it
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux -2
+# properly set the term variable if the terminal is qterminal (until a proper
+# fix is implemented)
+[[ $(</proc/$PPID/cmdline) == *qterminal* ]] && export TERM="xterm-256color"
+
+# Start tmux in every ssh session
+if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ] && [ -e /usr/bin/tmux ] ; then
+	tmux a || tmux
+fi
+

@@ -1,13 +1,19 @@
 # This file is sourced at the beginning of initial progress
 # when zsh is started as a login shell
 
-# Add my home directory/bin to the path
-path+=${HOME}/bin
-path+=${HOME}/bin/go
+# Add my home directory/.local/bin to the path
+path+=${HOME}/.local/bin
+path+=${HOME}/.local/bin/go
 export PATH
 
 # start mpd if no other instance exists
-[[ ! -a ~/.config/mpd/pid ]] && mpd
+if [[ ! -a ${HOME}/.config/mpd/pid ]]; then 
+	mpd
+else
+	if ! ps -p $(cat ${HOME}/.config/mpd/pid) > /dev/null; then
+		mpd
+	fi
+fi
 
 # Do things if in tty
 current_vt=$(tty) # Get the current virtual terminal
