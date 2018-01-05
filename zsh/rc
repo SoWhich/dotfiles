@@ -24,6 +24,8 @@ bindkey -v
 autoload -Uz vcs_info
 setopt promptsubst
 
+setopt extended_glob
+
 function prompt_char {
 	git branch >/dev/null 2>/dev/null && echo '' && return
 	echo ''
@@ -49,8 +51,9 @@ alias la="ls -A --color=auto"
 alias lla="ls -hlAF --color=auto"
 alias mv="mv -i"
 alias vim="nvim"
+alias mail="neomutt"
 alias :q="exit"
-alias pwd="/usr/bin/pwd -P"
+alias pwd="/bin/pwd -P"
 alias fix="fuck"
 
 # properly set the term variable if the terminal is qterminal (until a proper
