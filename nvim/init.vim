@@ -40,7 +40,11 @@ if filereadable(expand($HOME.'/.config/nvim/autoload/plug.vim'))
 		Plug 'vim-scripts/java_getset.vim'
 
 		" Adds deoplete, a neovim or vim 7 word completion tools
+		" Also add completions for various languages
 		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+		Plug 'zchee/deoplete-clang'
+		Plug 'zchee/deoplete-go', { 'do': 'make'}
+		Plug 'zchee/deoplete-jedi'
 
 		" Adds NeoTex, a plugin to do live previewing of tex documents
 		Plug 'donRaphaco/neotex', { 'for': 'tex' }
