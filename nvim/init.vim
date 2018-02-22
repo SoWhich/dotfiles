@@ -42,12 +42,21 @@ if filereadable(expand($HOME.'/.config/nvim/autoload/plug.vim'))
 		" Adds deoplete, a neovim or vim 7 word completion tools
 		" Also add completions for various languages
 		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-		Plug 'zchee/deoplete-clang'
 		Plug 'zchee/deoplete-go', { 'do': 'make'}
 		Plug 'zchee/deoplete-jedi'
 
 		" Adds NeoTex, a plugin to do live previewing of tex documents
 		Plug 'donRaphaco/neotex', { 'for': 'tex' }
+
+		" Adds vim-racket, a plugin for racket
+		"Plug 'wlangstroth/vim-racket'
+		
+		" Add vim-gdscript, a plugin for gdscript syntax highlighting
+		Plug 'quabug/vim-gdscript'
+
+		" Add vim-sleuth, a plugin to set vim tab options based on
+		" file contents
+		Plug 'tpope/vim-sleuth'
 
 	call plug#end()
 endif
