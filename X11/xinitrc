@@ -29,7 +29,7 @@ fi
 #xautolock -time 15 -locker "i3lock -i '/home/mkunjummen/Pictures/Stormtrooper-wall.png'"
 
 # Start PulseAudio
-start-pulseaudio-x11 &
+start-pulseaudio-x11
 
 # set the brightness to not death to my eyes level
 xbacklight -set 30
