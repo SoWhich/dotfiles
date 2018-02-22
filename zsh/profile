@@ -7,11 +7,19 @@ path+=${HOME}/.local/bin/go
 export PATH
 
 # start mpd if no other instance exists
-if [[ ! -a ${HOME}/.config/mpd/pid ]]; then 
-	mpd
-else
-	if ! ps -p $(cat ${HOME}/.config/mpd/pid) > /dev/null; then
+if command -v mpd > /dev/null 2>&1; then
+	if [[ ! -a ${HOME}/.config/mpd/pid ]]; then 
 		mpd
+	else
+		if ! ps -p $(cat ${HOME}/.config/mpd/pid) > /dev/null; then
+			mpd
+		fi
+	fi
+fi
+
+if command -v mkron > /dev/null 2>&1; then
+	if ! pgrep mkron; then
+		sudo mkron&
 	fi
 fi
 
